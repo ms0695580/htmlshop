@@ -1,0 +1,34 @@
+pipeline {
+    agent {label "project_agent1"}
+    
+    Triggers {
+        pollSCM {"* * * * *"}
+    }
+    
+    stages {
+        stage('stage1') {
+            steps {
+                echo 'clone'
+                git branch: 'main', url: 'https://github.com/ms0695580/htmlshop.git'
+            }
+        }
+        stage('stage2') {
+            steps {
+                echo 'copying'
+                sh '''pwd'''
+                sh '''ls'''
+            }
+        }
+        stage('stage3') {
+            steps {
+                echo 'deploy httpd'
+                sh '''scp-i/home/ec2-user/key.pem-r/var/jenkins/workspace/html_project_httpd/*ec2-user@18.143.75.187:/var/www/html'''
+            }
+        }
+        stage('stage4') {
+            steps {
+                echo 'check the deploy'
+            }
+        }
+    }
+}
