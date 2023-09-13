@@ -1,5 +1,5 @@
 pipeline {
-    agent { label "agentA" }
+    agent { label "project_agent1" }
     
     triggers {
         pollSCM('* * * * *')
@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('clone_project_A') {
             steps {
-                echo 'clone project A'
+                echo 'clone project_agent1'
                 git 'https://github.com/vincloud2/Helloworld-latest.git'
             }
         }
