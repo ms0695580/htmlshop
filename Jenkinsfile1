@@ -9,14 +9,14 @@ pipeline {
         stage('clone_project_A') {
             steps {
                 echo 'clone project_agent1'
-                git 'https://github.com/vincloud2/Helloworld-latest.git'
+                git branch: 'main', url: 'https://github.com/ms0695580/htmlshop.git''
             }
         }
         stage('build_project_A') {
             steps {
                 echo 'build_projectA'
-                sh 'yum install maven -y'
-                sh 'mvn -Dmaven.test.failure.ignore=true install'
+                sh 'pwd'
+                sh 'sh'
             }
         } 
         stage('Docker_build') {
